@@ -18,7 +18,8 @@
     "build-babel": "babel . -d ./dist -s true --copy-files --ignore node_modules ",
     "build": "npm run clean && npm run build-babel",
     "start": "NUMBER_OF_CONSECUTIVE_DAYS=3 node ./dist/index.js",
-    "start:dev": "NUMBER_OF_CONSECUTIVE_DAYS=3 nodemon --inspect=0.0.0.0:9229 --exec babel-node ./index.js"
+    "start:dev": "NUMBER_OF_CONSECUTIVE_DAYS=3 nodemon --inspect=0.0.0.0:9229 --exec babel-node ./index.js",
+    "test": "mocha --compilers js:@babel/register test"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
