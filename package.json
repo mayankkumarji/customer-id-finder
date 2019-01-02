@@ -1,0 +1,59 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main",
+  "repository": "",
+  "author": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.23.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build-babel": "babel . -d ./dist -s true --copy-files --ignore node_modules ",
+    "build": "npm run clean && npm run build-babel",
+    "start": "NUMBER_OF_CONSECUTIVE_DAYS=3 node ./dist/index.js",
+    "start:dev": "NUMBER_OF_CONSECUTIVE_DAYS=3 nodemon --inspect=0.0.0.0:9229 --exec babel-node ./index.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.8",
+    "standard": "^12.0.1"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  "standard": {
+    "env": [ "mocha" ],
+    "globals": [
+      "it"
+    ],
+    "ignore": [
+      "/node_modules"
+    ]
+  }
+}
